@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 import getpass
@@ -38,12 +39,17 @@ containers = birthdays.find_elements_by_css_selector("[class='tvmbv18p s1tcr66n'
 last_birthday = driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div/div/div/div/div[1]/div/div/div/div[2]/div[2]/div/div[2]/div[2]/div/form/div/div/div[1]/div/div/div[2]/div')
 last_birthday.send_keys("Happy Birthday!")
 
+# Uncomment line below to ACTUALLY send it
+# last_birthday.send_keys(Keys.ENTER)
+
 print(f'There are {len(containers) + 1} birthdays today')
 
 # Loop through the birthdays today and grab the text box element
 for b in containers:
     text_area = b.find_element_by_css_selector("[class='notranslate _5rpu']")
     text_area.send_keys("Happy Birthday!")
+    # Uncomment line below to ACTUALLY send it
+    # text_area.send_keys(Keys.ENTER)
 
 # Pause for dramatic effect 
 time.sleep(5)
